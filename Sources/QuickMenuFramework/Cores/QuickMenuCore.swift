@@ -28,6 +28,7 @@ public struct QuickMenuState: Equatable {
 public enum QuickMenuAction: Equatable {
     case activate
     case showPostEdit
+    case hidePostEdit
 }
 
 
@@ -40,7 +41,10 @@ public let quickMenuReducer = Reducer<QuickMenuState, QuickMenuAction, QuickMenu
         state.activate.toggle()
         return .none
     case .showPostEdit:
-        state.showPostEdit.toggle()
+        state.showPostEdit = true
+        return .none
+    case .hidePostEdit:
+        state.showPostEdit = false
         return .none
     }
 }
