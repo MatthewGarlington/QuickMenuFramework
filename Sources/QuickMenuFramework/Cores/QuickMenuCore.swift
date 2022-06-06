@@ -19,16 +19,16 @@ public struct QuickMenuState: Equatable {
         activate: Bool = false,
         name: [String] = ["person", "note", "pencil", "plus"]
     ) {
-        self.showPostEdit = showPostEdit
         self.activate = activate
         self.name = name
+        self.showPostEdit = showPostEdit
     }
 }
 
 public enum QuickMenuAction: Equatable {
     case activate
     case showPostEdit
-    case hidePostEdit
+    case dismissPostEditPressed
 }
 
 
@@ -43,8 +43,8 @@ public let quickMenuReducer = Reducer<QuickMenuState, QuickMenuAction, QuickMenu
     case .showPostEdit:
         state.showPostEdit = true
         return .none
-    case .hidePostEdit:
-        state.showPostEdit = false
+    case .dismissPostEditPressed:
+        state.showPostEdit = false 
         return .none
     }
 }
